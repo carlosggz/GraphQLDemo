@@ -1,2 +1,23 @@
 spring:
   application.name: GraphQLDemo
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: username
+    password: password
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+    locations: classpath:db/migrations
+    sql-migration-prefix: V
+    table: schema_version
+    fail-on-missing-locations: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
