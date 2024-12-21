@@ -1,0 +1,35 @@
+type Movie {
+    id: ID!
+    title: String!
+    year: Int!
+    genres: [Genre]
+}
+
+type Genre {
+    id: ID!
+    name: String!
+}
+
+type Comment {
+    id: ID!
+    comment: String!
+    movie: Int!
+}
+
+input MoviesFilter {
+    id: ID
+    title: String
+    year: Int
+}
+
+input CommentsFilter {
+    id: ID
+    comment: String
+    movie: Int
+}
+
+type Query {
+    movies(filter: MoviesFilter, offset: Int = 0, limit: Int = 5): [Movie]!
+    genres: [Genre]!
+    comments(filter: CommentsFilter, offset: Int = 0, limit: Int = 5): [Comment]!
+}
